@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Abu Baker | Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030712;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        #three-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        .blue-gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Bento Grid Specifics */
+        .bento-item {
+            transition: all 0.3s ease;
+        }
+        .bento-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        /* Project Card Hover */
+        .project-image-container {
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .project-image-container img {
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="selection:bg-blue-500/30 selection:text-blue-200">
+
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+    <canvas id="three-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-6 py-3 border-white/5 shadow-2xl">
+            <div class="text-xl font-extrabold tracking-tighter flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-sm">M</div>
+                <span>MOHAMMED ABU BAKER<span class="text-blue-500"></span></span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="nav-link text-sm font-semibold tracking-wide uppercase opacity-80 hover:opacity-100 transition">Home</a>
+                <a href="#about" class="nav-link text-sm font-semibold tracking-wide uppercase opacity-80 hover:opacity-100 transition">About</a>
+                <a href="#projects" class="nav-link text-sm font-semibold tracking-wide uppercase opacity-80 hover:opacity-100 transition">Projects</a>
+                <a href="#experience" class="nav-link text-sm font-semibold tracking-wide uppercase opacity-80 hover:opacity-100 transition">Experience</a>
+            </div>
+
+            <a href="#contact" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-xs font-bold transition transform active:scale-95 shadow-lg shadow-blue-600/20">
+                LET'S TALK
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center px-6 pt-20 relative">
+        <div data-aos="fade-down" class="mb-6 px-4 py-1.5 border border-blue-500/30 rounded-full bg-blue-500/5 text-blue-400 text-[10px] font-bold uppercase tracking-[0.2em]">
+            Full Stack Developer | AI & MLOps Enthusiast
+        </div>
+        <h1 data-aos="fade-up" class="text-6xl md:text-[120px] font-extrabold leading-none text-center tracking-tighter">
+            BUILD.<br/>
+            <span class="blue-gradient-text text-glow">INNOVATE.</span>
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="200" class="mt-8 max-w-2xl text-center text-slate-400 text-lg md:text-xl leading-relaxed">
+            I am a Computer Science Engineering student passionate about building real-world applications using Full Stack Development, AI, and Cloud technologies. I love solving problems, creating scalable systems, and turning ideas into impactful digital products.
+        </p>
+        
+        <div data-aos="fade-up" data-aos-delay="400" class="mt-12 flex flex-col sm:flex-row gap-4">
+            <a href="#projects" class="px-10 py-4 bg-white text-black rounded-2xl font-bold flex items-center gap-2 hover:bg-blue-500 hover:text-white transition group">
+                View My Projects
+                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
+            </a>
+            <a href="https://drive.google.com/file/d/1G1Ox50NXZ7e_zRc6pvD6-WMATBwylcYK/view?usp=drive_link" class="px-10 py-4 glass rounded-2xl font-bold border-white/10 hover:bg-white/5 transition">
+                Download Resume
+            </a>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About & Skills (Bento) -->
+    <section id="about" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            
+            <!-- Bio -->
+            <div data-aos="fade-right" class="md:col-span-8 glass p-8 md:p-12 rounded-[2.5rem] border-white/10 flex flex-col justify-between">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">About <span class="text-blue-500">Me</span></h2>
+                    <p class="text-slate-400 text-lg md:text-xl leading-relaxed">
+                        I am Mohammed Abu Baker, a Final-year B.Tech Computer Science student from Sreyas Institute of Engineering and Technology. I have hands-on experience in Java, Python, Full Stack Web Development, and basic Cloud Computing. I actively participate in hackathons and aim to build scalable software solutions.
+                    </p>
+                </div>
+                <div class="mt-12 flex gap-12">
+                    <div>
+                        <p class="text-3xl font-extrabold">02+</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Years Learning</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-extrabold">10+</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest mt-1">Projects Delivered</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Mini -->
+            <div data-aos="fade-left" class="md:col-span-4 glass p-8 rounded-[2.5rem] border-white/10 flex flex-col items-center justify-center text-center">
+                <div class="w-24 h-24 bg-blue-600/20 rounded-full mb-6 flex items-center justify-center border border-blue-500/30">
+                    <i class="fa-solid fa-user-graduate text-4xl text-blue-500"></i>
+                </div>
+                <h3 class="text-xl font-bold">Based in India</h3>
+                <p class="text-sm text-slate-500 mt-2">Open to Relocation • Internship Ready</p>
+                <div class="flex gap-4 mt-8">
+                    <a href="https://github.com/abubaker05" target="_blank" class="w-12 h-12 rounded-xl glass border-white/5 flex items-center justify-center hover:bg-blue-600 transition" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/mohammed-abubaker-22b73421b/" target="_blank" class="w-12 h-12 rounded-xl glass border-white/5 flex items-center justify-center hover:bg-blue-600 transition" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/abubaker_0505/?hl=en" target="_blank" class="w-12 h-12 rounded-xl glass border-white/5 flex items-center justify-center hover:bg-blue-600 transition" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Skills Grid -->
+            <div data-aos="fade-up" class="md:col-span-12 glass p-8 md:p-10 rounded-[2.5rem] border-white/10">
+                <h3 class="text-xl font-bold mb-8 uppercase tracking-widest text-slate-500">Core Toolkit</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                    <div class="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
+                        <i class="fa-brands fa-java text-4xl text-red-500"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">Java</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
+                        <i class="fa-brands fa-python text-4xl text-blue-400"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">Python</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
+                        <i class="fa-brands fa-react text-4xl text-blue-300"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">React / Next.js</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
+                        <i class="fa-brands fa-node-js text-4xl text-emerald-400"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">Node.js</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
+                        <i class="fa-solid fa-database text-4xl text-slate-400"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">SQL / MongoDB</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
+                        <i class="fa-brands fa-aws text-4xl text-orange-400"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">AWS / Cloud</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
+                        <i class="fa-brands fa-git-alt text-4xl text-orange-600"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">Git</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
+                        <i class="fa-brands fa-js text-4xl text-yellow-400"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">JavaScript</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
+                        <i class="fa-solid fa-code-branch text-4xl text-blue-500"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">GitHub</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-3 p-4 rounded-2xl hover:bg-white/5 transition border border-transparent hover:border-white/5">
+                        <i class="fa-solid fa-terminal text-4xl text-slate-200"></i>
+                        <span class="text-xs font-bold uppercase tracking-widest">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+            <div data-aos="fade-right">
+                <h2 class="text-5xl font-extrabold">Live <span class="text-blue-500">Projects</span></h2>
+                <p class="text-slate-400 mt-4 max-w-lg">From AI-driven civic solutions to professional business platforms.</p>
+            </div>
+            <div data-aos="fade-left" class="text-slate-500 font-mono text-sm hidden md:block">
+                [ 05 TOTAL PROJECTS ]
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1: Street Issues AI Agent -->
+            <div data-aos="fade-up" class="project-card flex flex-col group" data-tilt data-tilt-max="3">
+                <div class="project-image-container aspect-video glass p-4 border-white/5 shadow-2xl">
+                    <div class="w-full h-full rounded-lg bg-gradient-to-tr from-blue-900/40 to-slate-900 flex flex-col items-center justify-center relative overflow-hidden">
+                        <i class="fa-solid fa-map-location-dot text-6xl text-blue-500/20 group-hover:text-blue-500/40 transition duration-700"></i>
+                        <span class="absolute bottom-4 left-4 text-[10px] font-mono opacity-40">AI / ML / FLASK</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold group-hover:text-blue-400 transition">Street Issues Map AI</h3>
+                        <p class="text-slate-500 mt-2 text-xs">ML-based reporting system with live problem visualization on maps.</p>
+                    </div>
+                    <a href="https://urban-issues-frontend.onrender.com/" target="_blank" class="w-10 h-10 rounded-full glass border-white/5 flex items-center justify-center hover:bg-white hover:text-black transition">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2: Resume Builder -->
+            <div data-aos="fade-up" data-aos-delay="100" class="project-card flex flex-col group" data-tilt data-tilt-max="3">
+                <div class="project-image-container aspect-video glass p-4 border-white/5 shadow-2xl">
+                    <div class="w-full h-full rounded-lg bg-gradient-to-tr from-emerald-900/40 to-slate-900 flex flex-col items-center justify-center relative overflow-hidden">
+                        <i class="fa-solid fa-file-invoice text-6xl text-emerald-500/20 group-hover:text-emerald-500/40 transition duration-700"></i>
+                        <span class="absolute bottom-4 left-4 text-[10px] font-mono opacity-40">NEXT.JS / TAILWIND</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold group-hover:text-emerald-400 transition">Abuzzz Resume Builder</h3>
+                        <p class="text-slate-500 mt-2 text-xs">Dynamic professional resume creation with real-time export.</p>
+                    </div>
+                    <a href="https://abuzzz-resume-builder.onrender.com/" target="_blank" class="w-10 h-10 rounded-full glass border-white/5 flex items-center justify-center hover:bg-white hover:text-black transition">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3: MLOps ChatOps -->
+            <div data-aos="fade-up" data-aos-delay="200" class="project-card flex flex-col group" data-tilt data-tilt-max="3">
+                <div class="project-image-container aspect-video glass p-4 border-white/5 shadow-2xl">
+                    <div class="w-full h-full rounded-lg bg-gradient-to-tr from-purple-900/40 to-slate-900 flex flex-col items-center justify-center relative overflow-hidden">
+                        <i class="fa-solid fa-robot text-6xl text-purple-500/20 group-hover:text-purple-500/40 transition duration-700"></i>
+                        <span class="absolute bottom-4 left-4 text-[10px] font-mono opacity-40">PYTHON / MLOPS</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold group-hover:text-purple-400 transition">MLOps ChatOps</h3>
+                        <p class="text-slate-500 mt-2 text-xs">Prototype for uploading data, training models, and prediction serving.</p>
+                    </div>
+                    <a href="https://mlops-for-chatops-lime.vercel.app/" target="_blank" class="w-10 h-10 rounded-full glass border-white/5 flex items-center justify-center hover:bg-white hover:text-black transition">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 4: Ak Jewellers -->
+            <div data-aos="fade-up" data-aos-delay="300" class="project-card flex flex-col group" data-tilt data-tilt-max="3">
+                <div class="project-image-container aspect-video glass p-4 border-white/5 shadow-2xl">
+                    <div class="w-full h-full rounded-lg bg-gradient-to-tr from-orange-900/40 to-slate-900 flex flex-col items-center justify-center relative overflow-hidden">
+                        <i class="fa-solid fa-gem text-6xl text-orange-500/20 group-hover:text-orange-500/40 transition duration-700"></i>
+                        <span class="absolute bottom-4 left-4 text-[10px] font-mono opacity-40">HTML / CSS / JS</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold group-hover:text-orange-400 transition">Ak Jewellers Website</h3>
+                        <p class="text-slate-500 mt-2 text-xs">Modern business website for a jewelry brand showcase.</p>
+                    </div>
+                    <a href="https://abubaker05.github.io/ak-jewellers/" target="_blank" class="w-10 h-10 rounded-full glass border-white/5 flex items-center justify-center hover:bg-white hover:text-black transition">
+                        <i class="fa-solid fa-link"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 5: XP Fram -->
+            <div data-aos="fade-up" data-aos-delay="400" class="project-card flex flex-col group" data-tilt data-tilt-max="3">
+                <div class="project-image-container aspect-video glass p-4 border-white/5 shadow-2xl">
+                    <div class="w-full h-full rounded-lg bg-gradient-to-tr from-slate-800 to-slate-950 flex flex-col items-center justify-center relative overflow-hidden">
+                        <i class="fa-solid fa-window-maximize text-6xl text-slate-500/20 group-hover:text-slate-500/40 transition duration-700"></i>
+                        <span class="absolute bottom-4 left-4 text-[10px] font-mono opacity-40">RESPONSIVE UI</span>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold group-hover:text-white transition">XP Fram Website</h3>
+                        <p class="text-slate-500 mt-2 text-xs">Optimized responsive web experience for mobile and desktop.</p>
+                    </div>
+                    <a href="https://abubaker05.github.io/abuzzz-xp-farm/" target="_blank" class="w-10 h-10 rounded-full glass border-white/5 flex items-center justify-center hover:bg-white hover:text-black transition">
+                        <i class="fa-solid fa-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-32 px-6 bg-slate-950/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-4xl font-extrabold mb-20" data-aos="fade-up">Career <span class="text-blue-500">Milestones</span></h2>
+            
+            <div class="space-y-6">
+                <!-- Exp Item -->
+                <div data-aos="fade-right" class="glass p-8 rounded-3xl border-white/5 flex flex-col md:flex-row justify-between items-center group hover:bg-blue-600/5 transition duration-500">
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-blue-600 transition text-blue-500">M</div>
+                        <div>
+                            <h4 class="text-xl font-bold">Intern – Software Developer</h4>
+                            <p class="text-blue-500 text-sm font-semibold uppercase tracking-widest mt-1">Mphasis</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-right">
+                        <span class="px-4 py-2 glass rounded-full text-xs font-mono text-slate-400 uppercase tracking-widest">Jan 2026 — Present</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item -->
+                <div data-aos="fade-right" class="glass p-8 rounded-3xl border-white/5 flex flex-col md:flex-row justify-between items-center group hover:bg-blue-600/5 transition duration-500">
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-blue-600 transition text-blue-500">XP</div>
+                        <div>
+                            <h4 class="text-xl font-bold">Intern – Web Developer</h4>
+                            <p class="text-blue-500 text-sm font-semibold uppercase tracking-widest mt-1">XP!Farm.</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-right">
+                        <span class="px-4 py-2 glass rounded-full text-xs font-mono text-slate-400 uppercase">2025</span>
+                    </div>
+                </div>
+
+                <!-- Exp Item -->
+                <div data-aos="fade-left" class="glass p-8 rounded-3xl border-white/5 flex flex-col md:flex-row justify-between items-center group hover:bg-blue-600/5 transition duration-500">
+                    <div class="flex items-center gap-6">
+                        <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-xl font-bold group-hover:bg-blue-600 transition text-blue-500">I</div>
+                        <div>
+                            <h4 class="text-xl font-bold">Java Intern</h4>
+                            <p class="text-blue-500 text-sm font-semibold uppercase tracking-widest mt-1">InternPe</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-right">
+                        <span class="px-4 py-2 glass rounded-full text-xs font-mono text-slate-400 uppercase tracking-widest">2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto glass p-12 rounded-[3rem] border-white/10 text-center relative overflow-hidden">
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-blue-600/20 blur-[100px]"></div>
+            
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6" data-aos="zoom-in">Let's <span class="blue-gradient-text">Collaborate</span></h2>
+            <p class="text-slate-400 text-lg mb-10 max-w-xl mx-auto" data-aos="fade-up">
+                Interested in internships, collaborations, and software projects. Feel free to reach out for opportunities or technical discussions.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <a href="mailto:abubakerak8@gmail.com" class="px-8 py-4 bg-white text-black rounded-2xl font-bold hover:bg-blue-500 hover:text-white transition shadow-xl">
+                    Email Me Directly
+                </a>
+                <a href="https://github.com/abubaker05" target="_blank" class="px-8 py-4 glass rounded-2xl font-bold border-white/10 hover:bg-white/5 transition">
+                    View GitHub
+                </a>
+            </div>
+            
+            <div class="mt-16 flex justify-center gap-8 text-slate-500" data-aos="fade-up" data-aos-delay="400">
+                <a href="https://github.com/abubaker05" target="_blank" class="hover:text-blue-500 transition text-xs font-bold tracking-widest uppercase">GitHub</a>
+                <a href="https://www.linkedin.com/in/mohammed-abubaker-22b73421b/" target="_blank" class="hover:text-blue-500 transition text-xs font-bold tracking-widest uppercase">LinkedIn</a>
+                <a href="https://www.instagram.com/abubaker_0505/?hl=en" target="_blank" class="hover:text-blue-500 transition text-xs font-bold tracking-widest uppercase">Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 border-t border-white/5 text-center text-slate-600 text-[10px] uppercase tracking-[0.3em]">
+        &copy; 2026 Mohammed Abu Baker. Crafted for Impact.
+    </footer>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Tilt Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+
+    <script>
+        window.onload = () => {
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 50
+            });
+            initThree();
+            initCursor();
+        };
+
+        function initCursor() {
+            const cursor = document.getElementById('cursor');
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(2)');
+                el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
+            });
+        }
+
+        function initThree() {
+            const canvas = document.getElementById('three-canvas');
+            const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 35;
+
+            const particlesCount = 2500;
+            const positions = new Float32Array(particlesCount * 3);
+            for(let i = 0; i < particlesCount * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 100;
+            }
+
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            
+            const material = new THREE.PointsMaterial({
+                size: 0.12,
+                color: 0x3b82f6,
+                transparent: true,
+                opacity: 0.4,
+                blending: THREE.AdditiveBlending
+            });
+
+            const particlesMesh = new THREE.Points(geometry, material);
+            scene.add(particlesMesh);
+
+            let mouseX = 0;
+            let mouseY = 0;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX - window.innerWidth / 2) * 0.03;
+                mouseY = (e.clientY - window.innerHeight / 2) * 0.03;
+            });
+
+            function animate() {
+                requestAnimationFrame(animate);
+                particlesMesh.rotation.y += 0.0008;
+                particlesMesh.position.x += (mouseX - particlesMesh.position.x) * 0.05;
+                particlesMesh.position.y += (-mouseY - particlesMesh.position.y) * 0.05;
+                renderer.render(scene, camera);
+            }
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+            animate();
+        }
+    </script>
+</body>
+</html>
